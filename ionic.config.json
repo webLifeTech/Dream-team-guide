@@ -1,0 +1,7 @@
+{
+  "name": "Dream11-team-guide",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
