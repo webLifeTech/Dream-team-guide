@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Series Leaserboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="binding">
+    <ion-segment-button value="Series">
+      <ion-label>Series</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Weekly">
+      <ion-label>Weekly</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <section *ngIf="binding == 'Series'">
+    <div class="global_img">
+      <ion-card>
+        <img src="assets/screen17.png" alt="" />
+      </ion-card>
+    </div>
+  </section>
+  <section *ngIf="binding == 'Weekly'">
+    <!-- <div class="global_img">
+      <ion-card>
+        <img src="assets/screen3.png" alt="" />
+      </ion-card>
+    </div> -->
+  </section>
+</ion-content>

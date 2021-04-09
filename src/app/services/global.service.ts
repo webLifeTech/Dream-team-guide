@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Market } from '@ionic-native/market/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { MenuController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class GlobalService {
   constructor(
     private market: Market,
     private socialSharing: SocialSharing,
+    public manucl : MenuController,
   ) { }
 
   appShare(){
@@ -27,6 +29,10 @@ export class GlobalService {
 
   rateApp(){
     this.market.open('com.lifetechs.dreamteamguide');
+  }
+
+  toggleMenu(){
+    this.manucl.toggle()
   }
 
 }

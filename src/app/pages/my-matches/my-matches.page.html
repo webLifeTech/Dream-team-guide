@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Matches</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="binding">
+    <ion-segment-button value="upcoming">
+      <ion-label>Upcoming</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="live">
+      <ion-label>Live</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="completed">
+      <ion-label>Completed</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <section *ngIf="binding == 'upcoming'">
+    <div class="global_img">
+      <ion-card>
+        <img src="assets/screen3.png" alt="" />
+      </ion-card>
+    </div>
+  </section>
+  <section *ngIf="binding == 'live'">
+    <div class="global_img">
+      <ion-card>
+        <img src="assets/screen4.png" alt="" />
+      </ion-card>
+    </div>
+  </section>
+  <section *ngIf="binding == 'completed'">
+    <div class="global_img">
+      <ion-card>
+        <img src="assets/screen5.png" alt="" />
+      </ion-card>
+    </div>
+  </section>
+</ion-content>

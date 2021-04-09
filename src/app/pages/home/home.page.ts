@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController, ToastController } from '@ionic/angular';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -14,5 +15,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
   }
+
+  
 
 }

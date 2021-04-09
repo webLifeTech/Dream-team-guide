@@ -1,3 +1,74 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <!--  the side menu  -->
+  <!-- <ion-split-pane> -->
+    <ion-menu side="start" content-id="main-content">
+      <ion-header class="ion-no-border">
+        <ion-toolbar translucent color="dark">
+          <ion-item color="dark">
+            <ion-icon name="mail" slot="start"></ion-icon>
+            <ion-label>Inbox</ion-label>
+          </ion-item>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item lines="none" button (click)="mybalance()" >
+            <ion-icon color="dark" name="wallet-outline" slot="start"></ion-icon>
+            <ion-label>My Balance</ion-label>
+          </ion-item>
+          <ion-item lines="none" button (click)="earn()" >
+            <ion-icon color="dark" name="ticket-outline" slot="start"></ion-icon>
+            <ion-label>Earn 200</ion-label>
+          </ion-item>
+          <ion-item lines="none" button (click)="finepeople()" >
+            <ion-icon color="dark" name="search-outline" slot="start"></ion-icon>
+            <ion-label>Find People</ion-label>
+          </ion-item>
+          <ion-item button (click)="mycoupons()" >
+            <ion-icon color="dark" name="gift-outline" slot="start"></ion-icon>
+            <ion-label>My Coupons</ion-label>
+          </ion-item>
+          <ion-item lines="none" button (click)="howtoplay()" >
+            <ion-icon color="dark" name="game-controller-outline" slot="start"></ion-icon>
+            <ion-label>How to Play</ion-label>
+          </ion-item>
+          <ion-item button (click)="seriesleaserboard()" >
+            <ion-icon color="dark" name="star-outline" slot="start"></ion-icon>
+            <ion-label>Series Leaderboard</ion-label>
+          </ion-item>
+          <ion-item lines="none" button (click)="setting()" >
+            <ion-icon color="dark" name="settings-outline" slot="start"></ion-icon>
+            <ion-label>My info & Setting</ion-label>
+          </ion-item>
+          <ion-item button (click)="more()" >
+            <ion-icon color="dark" name="ellipsis-horizontal-circle-outline" slot="start"></ion-icon>
+            <ion-label>More</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="6">
+                <ion-item lines="none"  button (click)="helpdesk()" class="ion-no-padding">
+                  <ion-icon color="dark" name="help-circle-outline" slot="start"></ion-icon>
+                  <ion-label>Helpdesk</ion-label>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item lines="none"  button (click)="123()" class="ion-no-padding">
+                  <ion-icon color="dark" name="chatbox-ellipses" slot="start"></ion-icon>
+                  <ion-label>Chat</ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+  <!-- </ion-split-pane> -->
+  
+    <!-- the main content -->
+    <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

@@ -1,21 +1,26 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title>home</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="gs.toggleMenu()">
+        <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="12">
-        <ion-button expand="block" (click)="gs.appShare()">Share App</ion-button>
-      </ion-col>
-      <ion-col size="12">
-        <ion-button expand="block" (click)="gs.rateApp()">Rate App</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <div class="ion-text-center">
-    <p>Coming Soon</p>
+  <div class="global_img">
+    <ion-card>
+      <img src="assets/screen1.png" alt="" />
+    </ion-card>
+  </div>
+  <div class="global_img">
+    <ion-card>
+      <img src="assets/screen2.png" alt="" />
+    </ion-card>
   </div>
 </ion-content>
