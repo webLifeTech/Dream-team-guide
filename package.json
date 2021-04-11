@@ -1,5 +1,5 @@
 {
-  "name": "Dream11-team-guide",
+  "name": "dream11teamguide",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -87,7 +87,7 @@
       "cordova-plugin-androidx": {},
       "cordova-plugin-androidx-adapter": {},
       "cordova-plugin-admob-free": {
-        "ADMOB_APP_ID": "ca-app-pub-3940256099942544~3347511713"
+        "ADMOB_APP_ID": "ca-app-pub-8376945539001469~6455999421"
       }
     },
     "platforms": [

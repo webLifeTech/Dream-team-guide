@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { Market } from '@ionic-native/market/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
     Market,
     SocialSharing,
     AdMobFree,
+    AppVersion,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

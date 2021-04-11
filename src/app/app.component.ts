@@ -30,7 +30,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       setTimeout(() => {
-        this.admobFree.rendomAdShow();
+        this.admobFree.showInterstitialAds();
       }, 1000);
       this.admobFree.adMobFreeBanner();
     });
