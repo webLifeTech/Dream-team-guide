@@ -1,8 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { ActionSheetController, IonRouterOutlet, Platform } from '@ionic/angular';
 import { AdmobfreeService } from './services/admobfree.service';
 import { GlobalService } from './services/global.service';
+import { AppVersion } from '@ionic-native/app-version/ngx';
+declare var window : any
+
 
 @Component({
   selector: 'app-root',
@@ -11,11 +14,15 @@ import { GlobalService } from './services/global.service';
 })
 export class AppComponent {
   @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
+
+  fireBaseUrl:any;
   constructor(
     private platform: Platform,
     private router: Router,
     public admobFree : AdmobfreeService,
     public gs : GlobalService,
+    public ac : ActionSheetController,
+    public av : AppVersion,
   ) {
     this.initializeApp();
     this.platform.backButton.subscribeWithPriority(0, () => {
@@ -29,11 +36,69 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.gs.getData();
+      try {
+        window.cordova.plugins.firebase.config.fetch(1).then((isfetch: any) => {
+          window.cordova.plugins.firebase.config.fetchAndActivate().then((res: any) => {
+            window.cordova.plugins.firebase.config.getString('getAllurls').then((res2: any) => {
+              this.fireBaseUrl = JSON.parse(res2);
+              this.gs.dream11TeamData = this.fireBaseUrl["macths"];
+              // console.log("this.fireBaseUrl>>>>>>>>>>>>>>>>>>>>>>>>>>>"+JSON.stringify(this.fireBaseUrl))
+              this.av.getVersionNumber().then( crVersion =>{
+                // console.log("crVersion============="+crVersion)
+                if(crVersion != this.fireBaseUrl['appVersion']){
+                  this.appUpdate();
+                }
+              })
+            }).catch((error: any) => console.error(error));
+        });
+      }).catch((err) => {
+        console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' + err);
+      });
+    } catch (ex) {
+      console.log('exexexexexexexexexexexexexexexex++++++++++++' + ex);
+    }
       setTimeout(() => {
         this.admobFree.showInterstitialAds();
       }, 1000);
       this.admobFree.adMobFreeBanner();
     });
+  }
+
+  // [{"name": "Chennai Super Kings",},
+  // {"name": "Delhi Capitals",},
+  // {"name": "Kolkata Riders",},
+  // {"name": "Mumbai Indians",},
+  // {"name": "Punjab Kings",},
+  // {"name": "Bangaluru",},
+  // {"name": "Rajasthan Royals",},
+  // {"name": "Sunrisers Hyderabad",}]
+
+  async appUpdate() {
+    const actionSheet = await this.ac.create({
+      header: 'Anjoy New Version',
+      mode: 'ios',
+      buttons: [{
+        text: 'Update Now',
+        handler: () => {
+          this.gs.rateApp();
+        }
+      }, {
+        text: 'New v0.0.5',
+        handler: () => {
+          this.gs.rateApp();
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+  
+    await actionSheet.present();
   }
 
   mybalance(){

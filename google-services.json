@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "4647694526",
+    "firebase_url": "https://dream11-team-guide-new-default-rtdb.firebaseio.com",
+    "project_id": "dream11-team-guide-new",
+    "storage_bucket": "dream11-team-guide-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4647694526:android:75d382a9c48909285e6eef",
+        "android_client_info": {
+          "package_name": "com.lifetechs.dreamteamguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "4647694526-72o897au73uq7grv5jhug49vqn6t7h7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAddJjmKWbz0Zpv2zb0eVoSSIaWKbKOtkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "4647694526-72o897au73uq7grv5jhug49vqn6t7h7v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

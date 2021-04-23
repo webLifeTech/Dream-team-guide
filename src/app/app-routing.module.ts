@@ -65,7 +65,16 @@ const routes: Routes = [
   {
     path: 'helpdesk',
     loadChildren: () => import('./pages/helpdesk/helpdesk.module').then( m => m.HelpdeskPageModule)
+  },
+  {
+    path: 'all-team',
+    loadChildren: () => import('./pages/dream11/all-team/all-team.module').then( m => m.AllTeamPageModule)
+  },
+  {
+    path: 'veiw-team',
+    loadChildren: () => import('./pages/dream11/veiw-team/veiw-team.module').then( m => m.VeiwTeamPageModule)
   }
+
 
 
 

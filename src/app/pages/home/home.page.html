@@ -1,18 +1,112 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="start">
-      <ion-button (click)="gs.toggleMenu()">
-        <ion-icon slot="icon-only" name="person-outline"></ion-icon>
-      </ion-button>
+      <ion-menu-button
+      ></ion-menu-button>
     </ion-buttons>
     <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="ion-text-capitalize" (click)="gs.appShare()">
+        <ion-icon slot="start" name="share-social-outline"></ion-icon>
+        App Share Karo
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="ion-no-margin ion-text-center">
+          <ion-card-header>
+            <ion-card-subtitle>VIVO IPL 2021</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <img src="assets/icon/app-icon.png" width="92px" style="border-radius: 20%;box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);"/>
+            <ion-card-header>
+              <ion-button (click)="gs.appShare()" expand="block" fill="outline" size="large" shape="round">
+                INVITED FRIENDS
+              </ion-button>
+            </ion-card-header>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-list-header>
+        <h3>
+          <ion-label>Today Match Team Guru</ion-label>
+        </h3>
+      </ion-list-header>
+
+      <ion-col size="12" *ngFor="let item of gs.dream11TeamData" >
+        <ion-card button class="ion-no-margin main_card" (click)="seeAll(item.teams)">
+          <ion-card-header>
+            <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div style="display: flex;">
+              <ion-note class="team_name">{{item.form}}</ion-note>
+              <ion-note class="team_name2">{{item.to}}</ion-note>
+            </div>
+            <div style="display: flex;">
+              <img *ngIf="item.short1 == 'CSK'" src="assets/icon/csk.png" alt="" />
+              <img *ngIf="item.short1 == 'DC'" src="assets/icon/dc.png" alt="" />
+              <img *ngIf="item.short1 == 'KKR'" src="assets/icon/kkr.png" alt="" />
+              <img *ngIf="item.short1 == 'MI'" src="assets/icon/mi.png" alt="" />
+              <img *ngIf="item.short1 == 'PBKS'" src="assets/icon/pbks.png" alt="" />
+              <img *ngIf="item.short1 == 'RCB'" src="assets/icon/rcb.png" alt="" />
+              <img *ngIf="item.short1 == 'RR'" src="assets/icon/rr.png" alt="" />
+              <img *ngIf="item.short1 == 'SRH'" src="assets/icon/srh.png" alt="" />
+
+              <ion-note style="margin: auto;" color="primary">{{item.time}}</ion-note>
+
+              <img *ngIf="item.short2 == 'CSK'" src="assets/icon/csk.png" alt="" />
+              <img *ngIf="item.short2 == 'DC'" src="assets/icon/dc.png" alt="" />
+              <img *ngIf="item.short2 == 'KKR'" src="assets/icon/kkr.png" alt="" />
+              <img *ngIf="item.short2 == 'MI'" src="assets/icon/mi.png" alt="" />
+              <img *ngIf="item.short2 == 'PBKS'" src="assets/icon/pbks.png" alt="" />
+              <img *ngIf="item.short2 == 'RCB'" src="assets/icon/rcb.png" alt="" />
+              <img *ngIf="item.short2 == 'RR'" src="assets/icon/rr.png" alt="" />
+              <img *ngIf="item.short2 == 'SRH'" src="assets/icon/srh.png" alt="" />
+            </div>
+          </ion-card-content>
+          <ion-list-header>
+            <ion-label>Daily Match Teams</ion-label>
+            <ion-button class="ion-text-capitalize">See All</ion-button>
+          </ion-list-header>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12"class="ion-text-center">
+        <ion-button (click)="appGuide()"  shape="round">
+          Dreamm 11 App Guide <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-list-header>
+            <ion-note color="primary">Note :- Big Update is Comming Soon for All Fantasy App Tips!</ion-note>
+        </ion-list-header>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <img src="https://firebasestorage.googleapis.com/v0/b/dream11-team-guide-new.appspot.com/o/images%2FIMG-20210310-WA0022.jpg?alt=media&token=998b3a7b-bef3-4d44-b417-7cab4342fa38" alt="">
+        <img src="https://firebasestorage.googleapis.com/v0/b/dream11-team-guide-new.appspot.com/o/images%2FIMG-20210310-WA0021.jpg?alt=media&token=902d5600-2a33-4dce-a848-159e2803bbb6" alt="">
+        <p>Hello Friends!!</p>
+        <ion-note>क्या आप जानते हैं ?</ion-note>
+        <ion-note>ड्रीम ११ कैसे इस्तेमाल करते हैं ?</ion-note>
+        <ion-note>जानिए पूरी app की इन्फॉर्मेशन एक के बाद एक पेज देखिये और जानिए पूरी app कैसे इस्तेमाल करते हैं</ion-note>
+        <p>Les's Start</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <div class="global_img">
     <ion-card>
       <img src="assets/screen1.png" alt="" />
@@ -22,5 +116,5 @@
     <ion-card>
       <img src="assets/screen2.png" alt="" />
     </ion-card>
-  </div>
+  </div> -->
 </ion-content>

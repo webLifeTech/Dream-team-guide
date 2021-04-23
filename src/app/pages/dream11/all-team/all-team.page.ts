@@ -4,29 +4,25 @@ import { AdmobfreeService } from 'src/app/services/admobfree.service';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-all-team',
+  templateUrl: './all-team.page.html',
+  styleUrls: ['./all-team.page.scss'],
 })
-export class HomePage implements OnInit {
+export class AllTeamPage implements OnInit {
 
   constructor(
-    public gs : GlobalService,
     public router : Router,
+    public gs : GlobalService,
     public admobFree : AdmobfreeService,
   ) { }
 
   ngOnInit() {
   }
 
-  appGuide(){
-    this.router.navigate(['/tabs/mymatches']);
-  }
-
-  seeAll(teams){
+  viewTeam(img){
     this.admobFree.rendomAdShow();
-    this.gs.teamImages = teams;
-    this.router.navigate(['/all-team']);
+    this.gs.teamImage = img;
+    this.router.navigate(['/veiw-team']);
   }
 
 }
