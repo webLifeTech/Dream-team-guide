@@ -14,8 +14,6 @@ declare var window : any
 })
 export class AppComponent {
   @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
-
-  fireBaseUrl:any;
   constructor(
     private platform: Platform,
     private router: Router,
@@ -36,43 +34,33 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.gs.getData();
       try {
         window.cordova.plugins.firebase.config.fetch(1).then((isfetch: any) => {
           window.cordova.plugins.firebase.config.fetchAndActivate().then((res: any) => {
-            window.cordova.plugins.firebase.config.getString('getAllurls').then((res2: any) => {
-              this.fireBaseUrl = JSON.parse(res2);
-              this.gs.dream11TeamData = this.fireBaseUrl["macths"];
-              // console.log("this.fireBaseUrl>>>>>>>>>>>>>>>>>>>>>>>>>>>"+JSON.stringify(this.fireBaseUrl))
+            window.cordova.plugins.firebase.config.getString('getAllurl').then((res2: any) => {
+              this.gs.fireBaseUrl = JSON.parse(res2);
+              this.gs.getAllUrls = this.gs.fireBaseUrl["apps"];
+              console.log("this.gs.fireBaseUrl>>>>>>>>>>>>>>>>>>>>>>>>>>>"+JSON.stringify(this.gs.fireBaseUrl))
               this.av.getVersionNumber().then( crVersion =>{
+                this.gs.crVersion = crVersion;
                 // console.log("crVersion============="+crVersion)
-                if(crVersion != this.fireBaseUrl['appVersion']){
+                if(crVersion != this.gs.fireBaseUrl['appVersion']){
                   this.appUpdate();
+                }else{
+                  this.admobFree.showInterstitialAds();
                 }
               })
             }).catch((error: any) => console.error(error));
+          });
+        }).catch((err) => {
+          console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' + err);
         });
-      }).catch((err) => {
-        console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' + err);
-      });
-    } catch (ex) {
-      console.log('exexexexexexexexexexexexexexexex++++++++++++' + ex);
-    }
-      setTimeout(() => {
-        this.admobFree.showInterstitialAds();
-      }, 1000);
+      } catch (ex) {
+        console.log('exexexexexexexexexexexexexexexex++++++++++++' + ex);
+      }
       this.admobFree.adMobFreeBanner();
     });
   }
-
-  // [{"name": "Chennai Super Kings",},
-  // {"name": "Delhi Capitals",},
-  // {"name": "Kolkata Riders",},
-  // {"name": "Mumbai Indians",},
-  // {"name": "Punjab Kings",},
-  // {"name": "Bangaluru",},
-  // {"name": "Rajasthan Royals",},
-  // {"name": "Sunrisers Hyderabad",}]
 
   async appUpdate() {
     const actionSheet = await this.ac.create({
@@ -84,7 +72,7 @@ export class AppComponent {
           this.gs.rateApp();
         }
       }, {
-        text: 'New v0.0.5',
+        text: 'New v'+this.gs.fireBaseUrl['appVersion'],
         handler: () => {
           this.gs.rateApp();
         }
@@ -93,6 +81,7 @@ export class AppComponent {
         icon: 'close',
         role: 'cancel',
         handler: () => {
+          this.admobFree.showInterstitialAds();
           console.log('Cancel clicked');
         }
       }]
@@ -141,9 +130,9 @@ export class AppComponent {
     this.gs.toggleMenu();
     this.admobFree.rendomAdShow();
   }
-  helpdesk(){
-    this.router.navigate(['/helpdesk']);
-    this.gs.toggleMenu();
-    this.admobFree.rendomAdShow();
-  }
+  // helpdesk(){
+  //   this.router.navigate(['/helpdesk']);
+  //   this.gs.toggleMenu();
+  //   this.admobFree.rendomAdShow();
+  // }
 }

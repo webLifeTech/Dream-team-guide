@@ -73,7 +73,11 @@ const routes: Routes = [
   {
     path: 'veiw-team',
     loadChildren: () => import('./pages/dream11/veiw-team/veiw-team.module').then( m => m.VeiwTeamPageModule)
+  },  {
+    path: 'all-macths',
+    loadChildren: () => import('./pages/dream11/all-macths/all-macths.module').then( m => m.AllMacthsPageModule)
   }
+
 
 
 

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Macths for {{gs.dream11TeamData.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section *ngIf="gs.dream11TeamData['macths'].length">
+    <ion-list-header>
+      <h3>
+        <ion-label>Today Matchs</ion-label>
+      </h3>
+    </ion-list-header>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" *ngFor="let item of gs.dream11TeamData['macths']" >
+          <ion-card button class="ion-no-margin main_card" (click)="seeAll(item.teams)">
+            <ion-card-header>
+              <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <div style="display: flex;">
+                <ion-note class="team_name">{{item.form}}</ion-note>
+                <ion-note class="team_name2">{{item.to}}</ion-note>
+              </div>
+              <div style="display: flex;">
+                <img *ngIf="item.short1 == 'CSK'" src="assets/icon/csk.png" alt="" />
+                <img *ngIf="item.short1 == 'DC'" src="assets/icon/dc.png" alt="" />
+                <img *ngIf="item.short1 == 'KKR'" src="assets/icon/kkr.png" alt="" />
+                <img *ngIf="item.short1 == 'MI'" src="assets/icon/mi.png" alt="" />
+                <img *ngIf="item.short1 == 'PBKS'" src="assets/icon/pbks.png" alt="" />
+                <img *ngIf="item.short1 == 'RCB'" src="assets/icon/rcb.png" alt="" />
+                <img *ngIf="item.short1 == 'RR'" src="assets/icon/rr.png" alt="" />
+                <img *ngIf="item.short1 == 'SRH'" src="assets/icon/srh.png" alt="" />
+    
+                <ion-note style="margin: auto;" color="primary">{{item.time}}</ion-note>
+    
+                <img *ngIf="item.short2 == 'CSK'" src="assets/icon/csk.png" alt="" />
+                <img *ngIf="item.short2 == 'DC'" src="assets/icon/dc.png" alt="" />
+                <img *ngIf="item.short2 == 'KKR'" src="assets/icon/kkr.png" alt="" />
+                <img *ngIf="item.short2 == 'MI'" src="assets/icon/mi.png" alt="" />
+                <img *ngIf="item.short2 == 'PBKS'" src="assets/icon/pbks.png" alt="" />
+                <img *ngIf="item.short2 == 'RCB'" src="assets/icon/rcb.png" alt="" />
+                <img *ngIf="item.short2 == 'RR'" src="assets/icon/rr.png" alt="" />
+                <img *ngIf="item.short2 == 'SRH'" src="assets/icon/srh.png" alt="" />
+              </div>
+            </ion-card-content>
+            <ion-list-header>
+              <ion-label>Daily Match Teams</ion-label>
+              <ion-button class="ion-text-capitalize">See All</ion-button>
+            </ion-list-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>

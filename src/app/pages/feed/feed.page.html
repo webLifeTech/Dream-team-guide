@@ -9,11 +9,29 @@
 
 <ion-content>
   <div class="global_img">
-    <ion-card>
-      <img src="assets/screen8.png" alt="" />
+    <ion-card *ngIf="gs.fireBaseUrl.page5_1">
+      <img src="{{gs.fireBaseUrl.page5_1.ss}}" alt="" />
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2 *ngFor="let item of gs.fireBaseUrl['page5_1']['text']">
+              {{item}}
+            </h2>
+          </ion-text>
+        </ion-label>
+      </ion-item>
     </ion-card>
-    <ion-card>
-      <img src="assets/screen11.png" alt="" />
+    <ion-card *ngIf="gs.fireBaseUrl.page5_2">
+      <img src="{{gs.fireBaseUrl.page5_2.ss}}" alt="" />
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2 *ngFor="let item of gs.fireBaseUrl['page5_2']['text']">
+              {{item}}
+            </h2>
+          </ion-text>
+        </ion-label>
+      </ion-item>
     </ion-card>
   </div>
 </ion-content>

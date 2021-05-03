@@ -8,9 +8,18 @@
 </ion-header>
 
 <ion-content>
-  <div class="global_img">
+  <div class="global_img" *ngIf="gs.fireBaseUrl.page10">
     <ion-card>
-      <img src="assets/screen19.png" alt="" />
+      <img src="{{gs.fireBaseUrl.page10.ss}}" alt="" />
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2 *ngFor="let item of gs.fireBaseUrl['page10']['text']">
+              {{item}}
+            </h2>
+          </ion-text>
+        </ion-label>
+      </ion-item>
     </ion-card>
-  </div>
+</div>
 </ion-content>

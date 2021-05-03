@@ -30,12 +30,29 @@
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 4px 6px 0 rgb(0 0 0 / 5%);
     border-radius: 4px;
 }
-
-// .global_img{
-//     img{
-        
-//     }
-// }
+.main_card{
+    .team_name{
+        color: #000000;
+        font-size: 12px;
+    }
+    .team_name2{
+        color: #000000;
+        margin-left: auto;
+        font-size: 12px;
+    }
+}
+.allApps{
+    img{
+        // height: 140px;
+        width: 200px;
+        object-fit: cover;
+        margin-top: 12px;
+        // margin: auto;
+    }
+    ion-card-content{
+        padding: 10px;
+    }
+}
 ion-note{
     display: block;
 }

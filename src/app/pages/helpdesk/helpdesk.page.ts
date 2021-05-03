@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-helpdesk',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpdeskPage implements OnInit {
 
-  constructor() { }
+  constructor(public gs : GlobalService,) { }
 
   ngOnInit() {
   }

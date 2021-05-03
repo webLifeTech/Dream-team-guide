@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-series-leaserboard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeriesLeaserboardPage implements OnInit {
   binding : any = 'Series';
-  constructor() { }
+  constructor(public gs : GlobalService,) { }
 
   ngOnInit() {
   }

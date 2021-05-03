@@ -20,13 +20,20 @@ export class HomePage implements OnInit {
   }
 
   appGuide(){
+    this.admobFree.rendomAdShow();
     this.router.navigate(['/tabs/mymatches']);
   }
 
-  seeAll(teams){
+  allMacths(data){
     this.admobFree.rendomAdShow();
-    this.gs.teamImages = teams;
-    this.router.navigate(['/all-team']);
+    this.gs.dream11TeamData = data;
+    this.router.navigate(['/all-macths']);
   }
+
+  // viewTeam(img){
+  //   this.admobFree.rendomAdShow();
+  //   this.gs.teamImage = img;
+  //   this.router.navigate(['/veiw-team']);
+  // }
 
 }

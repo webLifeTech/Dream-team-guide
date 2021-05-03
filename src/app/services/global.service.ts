@@ -9,9 +9,12 @@ import { MenuController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class GlobalService {
+  fireBaseUrl : any = {};
+  getAllUrls : any = [];
   dream11TeamData : any = [];
   teamImages : any = [];
   teamImage:any = null;
+  crVersion : any;
   constructor(
     private market: Market,
     private socialSharing: SocialSharing,
@@ -42,7 +45,7 @@ export class GlobalService {
     this.manucl.toggle()
   }
 
-  getData(){
+  // getData(){
     // const storeRef = this.fireStore.collection<any>('images')
     // console.log("err>>>>>>>>>>>>>>>>>>>>>"+JSON.stringify(storeRef));
     // return new Promise ((resolve , reject) =>{
@@ -53,6 +56,6 @@ export class GlobalService {
   	// 		reject(err);
   	// 	});
   	// });
-  }
+  // }
 
 }
