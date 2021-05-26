@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig, AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
 import { LoadingController, Platform } from '@ionic/angular';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdmobfreeService {
-  isIntAdsReady : boolean = false;
-  isRewardAdsReady : boolean = false;
-  isLoading : any;
+  isIntAdsReady: boolean = false;
+  isRewardAdsReady: boolean = false;
+  isLoading: any;
   constructor(
     private admobFree: AdMobFree,
-    private lc : LoadingController,
+    private lc: LoadingController,
     public platform: Platform,
+    public gs: GlobalService,
   ) {
     // Banner ad : ca-app-pub-8376945539001469/1203672748
     // Interstilal ad : ca-app-pub-8376945539001469/3963080915
@@ -34,7 +36,7 @@ export class AdmobfreeService {
     });
   }
 
-  adMobFreeBanner(){
+  adMobFreeBanner() {
     const bannerConfig: AdMobFreeBannerConfig = {
       id: 'ca-app-pub-8376945539001469/1203672748',
       isTesting: true,
@@ -45,24 +47,24 @@ export class AdmobfreeService {
     this.admobFree.banner.config(bannerConfig);
     this.admobFree.banner.prepare().then((res) => {
       console.log("bannerConfig>>>>>>>>>>>>>>", res);
-      }).catch(e => console.log(e));
+    }).catch(e => console.log(e));
   }
 
   showInterstitialAds() {
     this.preLoading().then(() => {
       this.isIntAdsReady = true;
       this.admobFree.interstitial.isReady().then((isAdtime) => {
-          if (isAdtime) {
-            this.admobFree.interstitial.show();
-          }
-          if (this.isLoading) {
-            this.isLoading.dismiss();
-          }
-        }).catch((err) => {
-          if (this.isLoading) {
-            this.isLoading.dismiss();
-          }
-        });
+        if (isAdtime) {
+          this.admobFree.interstitial.show();
+        }
+        if (this.isLoading) {
+          this.isLoading.dismiss();
+        }
+      }).catch((err) => {
+        if (this.isLoading) {
+          this.isLoading.dismiss();
+        }
+      });
     });
 
     this.admobFree.on(this.admobFree.events.INTERSTITIAL_OPEN).subscribe(() => {
@@ -87,23 +89,23 @@ export class AdmobfreeService {
   }
 
   preInteAds() {
-      const interstitialConfig: AdMobFreeInterstitialConfig = {
-        id: 'ca-app-pub-8376945539001469/3963080915',
-        isTesting: true,
-        autoShow: false
-      };
-      this.admobFree.interstitial.config(interstitialConfig);
-      this.admobFree.interstitial.prepare().then((res) => {
-        console.log("interstitialConfig>>>>>>>>>>>>>>", res);
-      }).catch(e => {
-        console.log(e)
-      });
+    const interstitialConfig: AdMobFreeInterstitialConfig = {
+      id: 'ca-app-pub-8376945539001469/3963080915',
+      isTesting: true,
+      autoShow: false
+    };
+    this.admobFree.interstitial.config(interstitialConfig);
+    this.admobFree.interstitial.prepare().then((res) => {
+      console.log("interstitialConfig>>>>>>>>>>>>>>", res);
+    }).catch(e => {
+      console.log(e)
+    });
   }
 
-  rendomAdShow(){
-    var reqCount = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  rendomAdShow() {
+    var reqCount = this.gs.fireBaseUrl['rendomAds'] || [2, 3, 4, 5, 6, 7, 8, 9, 10];
     var findFive = reqCount[Math.floor(Math.random() * reqCount.length)];
-    if(findFive == 2 || findFive == 5 || findFive == 8){
+    if (findFive == 1 || findFive == 3 || findFive == 5 || findFive == 6 || findFive == 9) {
       this.showInterstitialAds();
     }
   }

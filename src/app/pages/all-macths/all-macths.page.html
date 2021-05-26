@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Macths for {{gs.dream11TeamData.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section *ngIf="gs.dream11TeamData['macths'].length">
+    <ion-list-header>
+      <h3>
+        <ion-label>Next Matchs</ion-label>
+      </h3>
+    </ion-list-header>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" *ngFor="let item of gs.dream11TeamData['macths']">
+          <ion-card button class="ion-no-margin main_card" (click)="seeAll(item.teams)">
+            <ion-card-header>
+              <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content class="flag-sect">
+              <div style="display: flex;">
+                <ion-note class="team_name">{{item.form}}</ion-note>
+                <ion-note class="team_name2">{{item.to}}</ion-note>
+              </div>
+              <div style="display: flex;">
+                <img [src]="item.logo1" alt="" />
+                <ion-note style="margin: auto;" color="primary">{{item.time}}</ion-note>
+                <img [src]="item.logo2" alt="" />
+              </div>
+            </ion-card-content>
+            <ion-list-header>
+              <ion-label>Match Teams</ion-label>
+              <ion-button class="ion-text-capitalize">See All</ion-button>
+            </ion-list-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>

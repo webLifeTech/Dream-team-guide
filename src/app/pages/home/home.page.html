@@ -1,8 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button
-      ></ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Home</ion-title>
     <ion-buttons slot="end">
@@ -16,66 +15,43 @@
 
 <ion-content color="medium">
   <ion-grid fixed>
-    <ion-row>
-      <ion-col size="12">
-        <ion-card class="ion-no-margin ion-text-center">
-          <ion-card-header>
-            <ion-card-subtitle>{{gs.fireBaseUrl.main_title}}</ion-card-subtitle>
-          </ion-card-header>
+    <ion-row class="allApps ion-text-center">
+      <ion-col size="12" class="">
+        <ion-item lines="full" *ngIf="gs.crVersion != gs.fireBaseUrl['appVersion']">
+          <ion-label color="success">New Update Available</ion-label>
+          <ion-button (click)="gs.rateApp()" color="dark" shape="round" slot="end">
+            Update App
+          </ion-button>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label>All Fantasy Cricket Apps</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" *ngFor="let item of gs.getAllUrls">
+        <ion-card class="ion-no-margin" (click)="allMacths(item)">
+          <img [src]="item.logo" alt="loading..." />
           <ion-card-content>
-            <img src="assets/icon/app-icon.png" width="92px" style="border-radius: 20%;box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);"/>
-            <ion-card-header class="ion-no-padding">
-              <ion-button (click)="gs.appShare()"  shape="round">
-                <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-                INVITED FRIENDS
-              </ion-button>
-            </ion-card-header>
+            <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
+            <ion-text *ngIf="item.subtitle" color="dark">
+              <h3>{{item.subtitle}}</h3>
+            </ion-text>
+            <ion-button class="ion-text-capitalize" shape="round">
+              View Macths
+            </ion-button>
           </ion-card-content>
         </ion-card>
       </ion-col>
-
-    </ion-row>
-    <!-- <ion-row class="allApps">
-      <ion-col size="6" class="ion-text-center ion-no-padding"> -->
-        <ion-row class="allApps ion-text-center">
-          <ion-col size="12" class="">
-            <ion-item lines="full" *ngIf="gs.crVersion != gs.fireBaseUrl['appVersion']">
-              <ion-label color="success">New Update Available</ion-label>
-              <ion-button (click)="gs.rateApp()" color="dark" shape="round" slot="end">
-                Update App
-              </ion-button>
-            </ion-item>
-            <ion-item lines="full">
-              <ion-label>All Fantasy Cricket Apps</ion-label>
-            </ion-item>
-          </ion-col>
-          <ion-col size="12" *ngFor="let item of gs.getAllUrls">
-            <ion-card class="ion-no-margin">
-              <img [src]="item.logo" alt="loading..." />
-              <ion-card-content>
-                <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
-                <ion-text *ngIf="item.subtitle" color="dark">
-                  <h3>{{item.subtitle}}</h3>
-                </ion-text>
-                <ion-button class="ion-text-capitalize" shape="round" (click)="allMacths(item)">
-                  View Macths
-                </ion-button>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
     </ion-row>
   </ion-grid>
   <ion-grid fixed>
-    <!-- next day -->
     <ion-row>
-      <ion-col size="12"class="ion-text-center">
-        <ion-button (click)="appGuide()"  shape="round">
-          Dreamm 11 App Guide <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-        </ion-button>
-      </ion-col>
       <ion-col size="12" class="ion-text-center">
         <ion-list-header>
-            <ion-note color="primary">Please Note :- We are provide dream teams before toss so your responsibility is check your dream team 11 after toss. Because players can be different after toss.</ion-note>
+          <ion-note color="primary">Please Note :- We are provide dream teams before toss so your responsibility is
+            check your dream team 11 after toss. Because players can be different after toss.</ion-note>
+        </ion-list-header>
+        <ion-list-header *ngIf="gs.fireBaseUrl.titleNote">
+          <ion-note color="dark">{{gs.fireBaseUrl.titleNote}}</ion-note>
         </ion-list-header>
       </ion-col>
     </ion-row>
